@@ -1,0 +1,22 @@
+{
+  "name": "lumber-forestadmin",
+  "version": "0.0.1-beta.0",
+  "description": "Forest Admin for Lumber.",
+  "keywords": [
+    "lumber",
+    "forestadmin",
+    "adminpanel"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sandro Munda <sandro@munda.me>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "forest-express-sequelize": "latest",
+    "lodash": "^4.17.11",
+    "mkdirp": "^0.5.1"
+  }
+}
