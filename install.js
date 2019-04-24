@@ -105,7 +105,6 @@ module.exports = async (logger, inquirer, argv) => {
   try {
     sessionToken = fs.readFileSync(`${os.homedir()}/.lumberrc`);
   } catch (err) {
-    console.log(argv);
     if (argv.email) {
       await loginWithEmailArgv();
     } else {
