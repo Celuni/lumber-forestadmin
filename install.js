@@ -130,7 +130,7 @@ module.exports = async (logger, inquirer, argv) => {
     const [rendering] = newProject.defaultEnvironment.renderings;
 
     logger.success(`Hooray, ${chalk.green('installation success')}!\n`);
-    logger.info(`Open your admin panel: ${chalk.cyan(`https://app.forestadmin.com/${rendering.id}`)}\n`);
+    logger.info(`Your admin panel is available here: ${chalk.cyan(`https://app.forestadmin.com/${rendering.id}`)}\n`);
 
     return {
       envSecret: newProject.defaultEnvironment.secretKey,

@@ -17,6 +17,7 @@
     "bluebird": "^3.5.4",
     "chalk": "^2.4.2",
     "cors": "^2.8.5",
+    "forest-express-mongoose": "^3.1.0",
     "forest-express-sequelize": "^3.1.0",
     "jsonapi-serializer": "^3.6.4",
     "lodash": "^4.17.11",

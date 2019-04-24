@@ -5,6 +5,6 @@ module.exports = function (app) {
     modelsDir: __dirname + '/../../models',
     envSecret: process.env.FOREST_ENV_SECRET || '<%= envSecret %>',
     authSecret: process.env.FOREST_AUTH_SECRET || '<%= authSecret %>',
-    sequelize: models.sequelize,
+<% if (dbDialect === 'mongodb') { %>    mongoose: require('mongoose'), <% } else { %>    sequelize: models.sequelize, <% } %>
   });
 };
