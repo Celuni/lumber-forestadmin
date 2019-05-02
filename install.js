@@ -40,7 +40,6 @@ module.exports = async (logger, inquirer, argv) => {
   }
 
   async function createAccount() {
-    await createAccount();
     logger.info('Create an account:');
     const authConfig = await inquirer.prompt([{
       type: 'input',
