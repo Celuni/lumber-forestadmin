@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## RELEASE 1.0.3 - 2019-05-06
 ### Fixed
 - Smart features - Load the routes/ directory automatically.
 
