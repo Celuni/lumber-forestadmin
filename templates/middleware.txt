@@ -1,4 +1,5 @@
 const models = require('../../models');
+const requireAll = require('require-all');
 
 module.exports = function (app) {
   require('lumber-forestadmin').run(app, {
@@ -6,5 +7,11 @@ module.exports = function (app) {
     envSecret: process.env.FOREST_ENV_SECRET || '<%= envSecret %>',
     authSecret: process.env.FOREST_AUTH_SECRET || '<%= authSecret %>',
 <% if (dbDialect === 'mongodb') { %>    mongoose: require('mongoose'), <% } else { %>    sequelize: models.sequelize, <% } %>
+  });
+
+  requireAll({
+    dirname: __dirname + '/../../routes',
+    recursive: true,
+    resolve: Module => app.use('/forest', Module)
   });
 };

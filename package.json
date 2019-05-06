@@ -1,7 +1,7 @@
 {
   "name": "lumber-forestadmin",
   "description": "Forest Admin for Lumber.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "keywords": [
     "lumber",
     "forestadmin",
@@ -22,6 +22,7 @@
     "jsonapi-serializer": "^3.6.4",
     "lodash": "^4.17.11",
     "mkdirp": "^0.5.1",
+    "require-all": "^3.0.0",
     "superagent": "^5.0.2",
     "superagent-promise": "^1.1.0"
   },
