@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Added
+- Login - Support environment variables to login without prompt.
 
 ## RELEASE 1.0.3 - 2019-05-06
 ### Fixed

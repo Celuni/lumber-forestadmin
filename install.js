@@ -3,7 +3,6 @@ const fs = require('fs');
 const chalk = require('chalk');
 const KeyGenerator = require('./services/key-generator');
 const api = require('./services/api');
-const auth = require('./services/authenticator');
 
 const FORMAT_PASSWORD = /^(?=\S*?[A-Z])(?=\S*?[a-z])((?=\S*?[0-9]))\S{8,}$/;
 
@@ -14,17 +13,24 @@ module.exports = async (logger, inquirer, argv) => {
 
   async function loginWithEmailArgv() {
     try {
-      const passwordConfig = await inquirer.prompt([{
-        type: 'password',
-        name: 'password',
-        message: 'What\'s your Forest Admin password:',
-        validate: (input) => {
-          if (input) { return true; }
-          return 'Please enter your password.';
-        },
-      }]);
+      let config = {};
+      const email = argv.email || process.env.FOREST_EMAIL;
 
-      sessionToken = await api.login(argv.email, passwordConfig.password);
+      if (process.env.FOREST_PASSWORD) {
+        config.password = process.env.FOREST_PASSWORD;
+      } else {
+        config = await inquirer.prompt([{
+          type: 'password',
+          name: 'password',
+          message: 'What\'s your Forest Admin password:',
+          validate: (input) => {
+            if (input) { return true; }
+            return 'Please enter your password.';
+          },
+        }]);
+      }
+
+      sessionToken = await api.login(email, config.password);
       fs.writeFileSync(`${os.homedir()}/.lumberrc`, sessionToken);
 
       logger.success('Login successful.');
@@ -104,7 +110,7 @@ module.exports = async (logger, inquirer, argv) => {
   try {
     sessionToken = fs.readFileSync(`${os.homedir()}/.lumberrc`);
   } catch (err) {
-    if (argv.email) {
+    if (argv.email || process.env.FOREST_EMAIL) {
       await loginWithEmailArgv();
     } else {
       await createAccount();
